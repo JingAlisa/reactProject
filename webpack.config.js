@@ -23,14 +23,7 @@ module.exports = {
       {
         test: /\.css$/,
         use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-            options: {
-              // you can specify a publicPath here
-              // by default it use publicPath in webpackOptions.output
-              publicPath: '../'
-            }
-          },
+          MiniCssExtractPlugin.loader,
           "css-loader"
         ]
       }
@@ -40,5 +33,9 @@ module.exports = {
     new HtmlWebpackPlugin({
         template:'./src/index.html'
     }),
+    new MiniCssExtractPlugin({
+      filename: "[name].css",
+      chunkFilename: "[id].css"
+    })
     ]
 };
